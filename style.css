@@ -1,0 +1,346 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('https://th.bing.com/th/id/R.bd01fb54be923a87fda72f8482b60395?rik=AmhwXuIvSzILlg&pid=ImgRaw&r=0')
+    no-repeat center center/cover;
+}
+
+.background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+h1 {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+/* Entry Layer */
+#entryLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  z-index: 2;
+}
+
+.floating-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.element {
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+
+.element:hover {
+  transform: translateY(-10px);
+}
+
+#treeImage {
+  bottom: 10%;
+  left: 10%;
+  width: 200px;
+}
+
+#mountainImage {
+  bottom: 5%;
+  right: 10%;
+  width: 300px;
+}
+
+#cloudImage {
+  top: 10%;
+  left: 50%;
+  width: 250px;
+}
+
+.entry {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10; /* Ensure the button is above other elements */
+}
+#entryButton {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #FF4500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#entryButton:hover {
+  background-color: #FF6347;
+}
+
+/* Smooth Transition Container */
+.transition-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#universeLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1; 
+  transition: transform 2s ease, opacity 2s ease;
+  z-index: 1;
+  background: url('https://th.bing.com/th/id/OIP.jQ1N5DplUbrekiQ4bzRIQgHaE7?rs=1&pid=ImgDetMain')
+    no-repeat center center/cover;
+  transform: translateY(0); 
+}
+
+.universe-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.universe-element {
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+
+h2 {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+/* Eagle Animation + Draggable */
+#eagleImage {
+  bottom: 20%;
+  left: 10%;
+  width: 250px;
+  animation: floatEagle 8s infinite ease-in-out;
+  cursor: grab; /* Indicate draggable element */
+}
+@keyframes floatEagle {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(20px);
+  }
+}
+
+#universeLayer #cloudImage {
+  top: 10%;
+  right: 100%;
+  width: 200px;
+  animation: floatCloud 12s infinite linear;
+}
+@keyframes floatCloud {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+#birdImage {
+  bottom: 20%;
+  right: 20%;
+  width: 200px;
+  animation: floatBird 6s infinite ease-in-out;
+}
+@keyframes floatBird {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+.universe-element:hover {
+  transform: scale(1.1);
+}
+
+.scroll-arrow {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  z-index: 10; /* Ensure it's above other elements */
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+#forestLayer {
+  background: url('https://th.bing.com/th/id/OIP._g73NL44a2iJKQWxaPbn8QHaE8?rs=1&pid=ImgDetMain')
+    no-repeat center center/cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;       
+  opacity: 0;
+  transform: translateY(100%); 
+  transition: transform 2s ease, opacity 2s ease;
+  z-index: 2; 
+}
+
+.forest-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.forest-element {
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+
+#bearImage {
+  bottom: 10%;
+  right: 10%;
+  width: 200px;
+  animation: moveBear 10s infinite linear;
+}
+@keyframes moveBear {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+#snakeImage {
+  bottom: 10%;
+  left: 10%;
+  width: 150px;
+}
+
+#monkeyImage {
+  top: 10%;
+  right: 10%;
+  width: 150px;
+}
+
+#forestLayer h2 {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: rgb(92, 48, 48);
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+ul {
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  color: rgb(92, 48, 48);
+  font-size: 1.2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+#forestScrollArrow {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  z-index: 10;
+}
+
+#ocean {
+  background: url('https://i.pinimg.com/originals/48/fb/ba/48fbba4767ef7de00de8059e61694880.jpg')
+    no-repeat center center/cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;         
+  opacity: 0;            
+  transform: perspective(1000px) rotateX(-90deg);
+  transition: transform 2s ease, opacity 2s ease;
+  z-index: 3; 
+}
+
+.third-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.third-element {
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+
+#turtle {
+  bottom: 20%;
+  left: 10%;
+  width: 200px;
+}
+#shark {
+  bottom: 20%;
+  right: 20%;
+  width: 200px;
+}
+#seahorse {
+  bottom: 20%;
+  right: 10%;
+  width: 200px;
+}
